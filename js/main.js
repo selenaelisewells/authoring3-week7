@@ -35,5 +35,6 @@ import { fetchData, postData } from "./modules/TheDataMiner.js";
 
     // but then we'd be on our way to rewriting the Axios API (you should research it)
     fetchData("../DataSet.json").then(data => handleDataSet(data)).catch(err => { console.log(err); popErrorBox(err); });
+    
     postData("test").then(data => console.log(data)).catch(err => console.log(err));
 })();
