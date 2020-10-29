@@ -17,7 +17,7 @@ import { fetchData, postData } from "./modules/TheDataMiner.js";
             let currentUser = userTemplate.cloneNode(true),
                 currentUserText = currentUser.querySelector('.user').children;
 
-            currentUserText[1].src = `images/${data[user].biopic}`;
+            currentUserText[1].src = `images/${data[user].avatar}`;
             currentUserText[2].textContent = data[user].name;
             currentUserText[3].textContent = data[user].role;
             currentUserText[4].textContent = data[user].nickname;
@@ -34,7 +34,5 @@ import { fetchData, postData } from "./modules/TheDataMiner.js";
     // that would make it really flexible and able to handle all kinds of requests and we could pass in a callback depending on what we want to do with our data
 
     // but then we'd be on our way to rewriting the Axios API (you should research it)
-    fetchData("../DataSet.json").then(data => handleDataSet(data)).catch(err => { console.log(err); popErrorBox(err); });
-    
-    postData("test").then(data => console.log(data)).catch(err => console.log(err));
+    fetchData("./includes/functions.php").then(data => handleDataSet(data)).catch(err => { console.log(err); popErrorBox(err); });
 })();
