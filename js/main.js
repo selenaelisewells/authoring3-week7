@@ -1,5 +1,5 @@
 // import your packages here
-import { fetchData, postData } from "./modules/TheDataMiner.js";
+import { fetchData } from "./modules/TheDataMiner.js";
 
 (() => {
     // stub * just a place for non-component-specific stuff
@@ -26,13 +26,6 @@ import { fetchData, postData } from "./modules/TheDataMiner.js";
             userSection.appendChild(currentUser);
         }
     }
-
-    
-    // we can add a catch handler to a thenable if things go wrong during our data retrieval attempt
-    // really, we should move all of this to an external class or function and pass arguments into it.
-
-    // that would make it really flexible and able to handle all kinds of requests and we could pass in a callback depending on what we want to do with our data
-
-    // but then we'd be on our way to rewriting the Axios API (you should research it)
-    fetchData("./includes/functions.php").then(data => handleDataSet(data)).catch(err => { console.log(err); popErrorBox(err); });
+        
+    fetchData("./includes/functions.php").then(data => handleDataSet(data)).catch(err => console.log(err));
 })();
