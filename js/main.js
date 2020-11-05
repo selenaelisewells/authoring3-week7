@@ -26,6 +26,30 @@ import { fetchData } from "./modules/TheDataMiner.js";
             userSection.appendChild(currentUser);
         }
     }
+
+    function retrieveProjectInfo() {
+        // test for an ID
+        debugger;
+        console.log(this.id);
+
+        fetchData(`./includes/index.php?id=${this.id}`).then(data => console.log(data)).catch(err => console.log(err));
+    }
+
+    function renderPortfolioThumbnails(thumbs) {
+        let userSection = document.querySelector('.user-section'),
+            userTemplate = document.querySelector('#user-template').content;
+
+        for (let user in thumbs) {
+            let currentUser = userTemplate.cloneNode(true),
+                currentUserText = currentUser.querySelector('.user').children;
+
+            currentUserText[1].src = `images/${thumbs[user].avatar}`;
+            currentUserText[1].id = thumbs[user].id;
+            // add this new user to the view
+            currentUser.addEventListener("click", retrieveProjectInfo);
+            userSection.appendChild(currentUser);
+        }
+    }
         
-    fetchData("./includes/functions.php").then(data => handleDataSet(data)).catch(err => console.log(err));
+    fetchData("./includes/index.php").then(data => renderPortfolioThumbnails(data)).catch(err => console.log(err));
 })();

@@ -14,11 +14,11 @@
         }
 
         //return $result;
-        echo (json_encode($result[0]));
+        echo (json_encode($result));
     }
 
-    function getSingleUser($conn, $target) {
-        $query = "SELECT * FROM profs WHERE id=" . $target . "";
+    function getSingleUser($conn, $id) {
+        $query = "SELECT * FROM profs WHERE id=" . $id . "";
 
         $runQuery = $conn->query($query);
 
@@ -27,5 +27,5 @@
         }
 
         //return $result;
-        echo (json_encode($result[0]));
+        echo (json_encode($result));
     }
